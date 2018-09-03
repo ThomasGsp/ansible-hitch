@@ -1,0 +1,11 @@
+- name: create /etc/hitch/certs/
+  file:
+    path: /etc/hitch/certs/
+    state: directory
+
+- name: Generate a default Self Signed OpenSSL certificate
+  openssl_certificate:
+    path:     path: /etc/hitch/certs/default.crt
+    privatekey_path: /etc/hitch/certs/default.key
+    csr_path: /etc/hitch/certs/default.csr
+    provider: selfsigned
