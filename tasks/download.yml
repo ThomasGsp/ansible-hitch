@@ -1,5 +1,16 @@
 ---
+
 # get_url on Ansible 1.x only supports sha256 checksumming, so we're only
+# using `checksums` on Ansible 2.x because they're sha1.
+- name: set hitch checksum
+  set_fact:
+    checksum: "{{ 'sha1' if checksums[version]|length == 40 else 'sha256' }}:{{ checksums[version] }}"
+  when:
+    - verify_checksum|bool
+    - checksum is not defined
+    - version in checksums
+    - ansible_version.major >= 2
+
 - name: download hitch (ansible 1.x)
   get_url:
     url: "{{ download_url }}"
