@@ -1,0 +1,62 @@
+---
+- name: compile hitch
+  command: make -j{{ ansible_processor_cores|default(1) + 1 }}{{ ' 32bit' if make_32bit|bool else '' }}
+  args:
+    chdir: /usr/local/src/hitch-{{ version }}
+    creates: /usr/local/src/hitch-{{ version }}/src/hitch-tls
+
+- name: create hitch install directory
+  file:
+    path: "{{ install_dir }}"
+    state: directory
+
+- name: create /etc/hitch
+  file:
+    path: /etc/hitch
+    state: directory
+
+- name: check if hitch user exists (ignore errors)
+  command: id {{ user }}
+  ignore_errors: yes
+  changed_when: false
+  register: user_exists
+
+- name: add hitch group
+  group:
+    name: "{{ group }}"
+    state: present
+  when: user_exists|failed
+
+- name: add hitch user
+  user:
+    name: "{{ _user }}"
+    group: "{{ group }}"
+    comment: "HitchTLS"
+    home: "{{ install_dir }}"
+    shell: /bin/false
+    system: yes
+  when: user_exists|failed
+
+- name: create /var/run/hitch
+  file:
+    path: /var/run/hitch
+    state: directory
+    owner: "{{ user }}"
+
+- name: install hitch
+  command: make PREFIX={{ install_dir }} install
+  args:
+    chdir: /usr/local/src/hitch-{{ version }}
+    creates: "{{ install_dir }}/bin/hitch"
+
+- name: list hitch binaries to add to alternatives
+  command: ls -1 {{ install_dir }}/bin
+  register: hitch_binaries
+  changed_when: false
+
+- name: add hitch binaries to alternatives
+  alternatives:
+    name: "{{ item }}"
+    path: "{{ install_dir }}/bin/{{ item }}"
+    link: "/usr/bin/{{ item }}"
+  with_items: "{{ binaries.stdout_lines }}"

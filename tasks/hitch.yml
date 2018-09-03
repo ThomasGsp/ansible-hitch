@@ -1,0 +1,137 @@
+---
+- name: create hitch working directory
+  file:
+    path: "{{ dir }}"
+    state: directory
+    recurse: yes
+    owner: "{{ user }}"
+
+- name: create hitch init script
+  template:
+    src: "{{ item }}"
+    dest: /etc/init.d/{{ service_name }}
+    mode: 0755
+  # Choose the distro-specific template. We must specify the templates
+  # path here because with_first_found tries to find files in files/
+  with_first_found:
+    - files:
+      - "{{ ansible_os_family }}/hitch.init.j2"
+      - default/hitch.init.j2
+      paths:
+        - ../templates
+  when: as_service and ansible_service_mgr|default() != "systemd"
+
+- name: create hitch systemd service
+  template:
+    src: "{{ item }}"
+    dest: /etc/systemd/system/{{ service_name }}.service
+    mode: 0644
+  with_first_found:
+    - files:
+      - "{{ ansible_os_family }}/hitch.service.j2"
+      - default/hitch.service.j2
+      paths:
+        - ../templates
+  register: unit_file
+  when: as_service and ansible_service_mgr|default() == "systemd"
+
+- name: create systemd tmpfiles configuration
+  template:
+    src: etc/tmpfiles.d/hitch.conf.j2
+    dest: /etc/tmpfiles.d/hitch.conf
+    mode: 0644
+  when:
+    - as_service
+    - ansible_service_mgr|default() == 'systemd'
+    - (pidfile|dirname).startswith('/var/run') or (pidfile|dirname).startswith('/run')
+
+- name: reload systemd daemon
+  command: systemctl daemon-reload
+  when:
+    - as_service
+    - ansible_service_mgr|default() == "systemd"
+    - unit_file|changed
+
+- name: set hitch to start at boot
+  service:
+    name: "{{ service_name }}"
+    enabled: yes
+  when: as_service
+
+# Check then create log dir to prevent aggressively overwriting permissions
+- name: check if log directory exists
+  stat:
+    path: "{{ logfile|dirname }}"
+  register: logdir
+  changed_when: false
+  when: logfile != '""'
+
+- name: create log directory if it does not exist
+  file:
+    state: directory
+    path: "{{ logfile|dirname }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+  when:
+    - logfile != '""'
+    - not logdir.stat.exists
+
+- name: touch the log file
+  file:
+    state: touch
+    path: "{{ logfile }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+  when: logfile != '""'
+
+- name: check if pid directory exists
+  stat:
+    path: "{{ pidfile|dirname }}"
+  register: piddir
+  changed_when: false
+  when: pidfile != '""'
+
+- name: create pid directory if it does not exist
+  file:
+    state: directory
+    path: "{{ pidfile|dirname }}"
+    owner: "{{ user }}"
+    group: "{{ group }}"
+  when:
+    - pidfile != '""'
+    - not piddir.stat.exists
+
+- name: create hitch config file
+  template:
+    src: hitch.conf.j2
+    dest: /etc/hitch/hitch.conf
+    owner: "{{ user }}"
+    mode: 0640
+  notify: "restart hitch {{ port }}"
+
+- name: add hitch init config file
+  template:
+    dest: /etc/sysconfig/{{ service_name }}
+    src: hitch.init.conf.j2
+    mode: 0600
+  when: ansible_os_family == "RedHat"
+  notify: "restart hitch"
+
+- name: add hitch init config file
+  template:
+    dest: /etc/default/{{ service_name }}
+    src: hitch.init.conf.j2
+    mode: 0600
+  when: ansible_os_family == "Debian"
+  notify: "restart hitch"
+
+# Flush handlers before ensuring the service is started to prevent
+# a start and then restart
+- name: flush handlers to apply config changes
+  meta: flush_handlers
+
+- name: ensure hitch is running
+  service:
+    name: "{{ service_name }}"
+    state: started
+  when: as_service

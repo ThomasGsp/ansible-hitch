@@ -1,0 +1,9 @@
+- name: create facts directory
+  file:
+    path: /etc/ansible/facts.d
+    state: directory
+
+- name: create hitch facts
+  template:
+    src: etc/ansible/facts.d/hitch.fact.j2
+    dest: /etc/ansible/facts.d/hitch.fact

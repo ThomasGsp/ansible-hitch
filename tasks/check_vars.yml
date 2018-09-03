@@ -1,0 +1,23 @@
+---
+# Checksums for Ansible 1.x must be sha256
+- name: check for checksum (ansible 1.x)
+  fail:
+    msg: >
+      A sha256 checksum must be provided for Ansible 1.x when
+      verify_checksum is set to true.
+  when:
+    - ansible_version.major < 2
+    - verify_checksum|bool
+    - checksum is not defined or checksum|length != 64
+
+- name: check for checksum (ansible 2.x)
+  fail:
+    msg: >
+      There is no sha1 checksum defined for version {{ version }} in
+      vars/main.yml. Set checksum manually or submit a PR to add this
+      version.
+  when:
+    - ansible_version.major >= 2
+    - verify_checksum|bool
+    - checksum is not defined
+    - version not in checksums

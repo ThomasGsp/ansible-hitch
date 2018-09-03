@@ -1,0 +1,72 @@
+## Installation options
+version         : 1.4.8
+install_dir     : "/opt/hitch"
+download_url    : "https://hitch-tls.org/source/hitch-1.4.8.tar.gz"
+dir             : "/etc/hitch/"
+
+# Set this to true to build 32-bit binaries
+make_32bit      : false
+# Set this value to a local path of a tarball to use for installation instead of downloading
+tarball         : false
+
+# Set this to true to validate redis tarball checksum against vars/main.ym
+verify_checksum : false
+
+as_service: true
+# Add local facts to /etc/ansible/facts.d for hitch
+local_facts: true
+# Service name
+service_name: "hitch"
+
+
+
+
+# front end option
+
+
+## back end option
+# Default Varnish frontend
+backend         : "127.0.0.1:6081"
+keepalive       : 3600
+backend-refresh :
+
+
+# ocsp options
+ocsp-dir          :
+ocsp-connect-tmo  :
+ocsp-resp-tmo     :
+ocsp-refresh-interval :
+ocsp-verify-staple    :
+
+# Key options
+pem-file        :
+  -  "/etc/hitch/certs/default.pem"
+
+private-key     :
+prefer-server-ciphers :
+proxy-proxy     : off
+
+
+alpn-protos     : "h2,http/1.1"
+tls-protos      : "TLSv1.1 TLSv1.2"
+ciphers         : "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH"
+sni-nomatch-abort :
+ssl-engine      :
+
+
+workers         : 4
+
+
+# Daemon options
+quiet           : on
+syslog          : on
+syslog-facility : daemon
+backlog         : 100
+user            : _hitch
+group           : _hitch
+daemon          : on
+chroot          : /etc/hitch
+
+write-ip        : off
+write-proxy-v1  : off
+write-proxy-v2  : on

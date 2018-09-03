@@ -1,0 +1,32 @@
+---
+# get_url on Ansible 1.x only supports sha256 checksumming, so we're only
+- name: download hitch (ansible 1.x)
+  get_url:
+    url: "{{ download_url }}"
+    dest: /usr/local/src/hitch-{{ version }}.tar.gz
+    sha256sum: "{{ checksum|default(omit) }}"
+  when:
+    - not tarball
+    - ansible_version.major < 2
+
+- name: download hitch (ansible 2.x)
+  get_url:
+    url: "{{ download_url }}"
+    dest: /usr/local/src/hitch-{{ version }}.tar.gz
+    checksum: "{{ checksum|default(omit) }}"
+  when:
+    - not tarball
+    - ansible_version.major >= 2
+
+- name: upload hitch
+  copy:
+    src: "{{ tarball }}"
+    dest: /usr/local/src/hitch-{{ version }}.tar.gz
+  when: tarball|default(false)
+
+- name: extract hitch tarball
+  unarchive:
+    src: /usr/local/src/hitch-{{ version }}.tar.gz
+    dest: /usr/local/src
+    creates: /usr/local/src/hitch-{{ version }}/Makefile
+    copy: no
