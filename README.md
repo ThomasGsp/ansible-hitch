@@ -1,6 +1,6 @@
 # ansible-hitch
 
-[![Build Status](https://travis-ci.org/DavidWittman/ansible-redis.svg?branch=master)](https://travis-ci.org/DavidWittman/ansible-redis) [![Ansible Galaxy](https://img.shields.io/badge/galaxy-DavidWittman.redis-blue.svg?style=flat)](https://galaxy.ansible.com/detail#/role/730)
+[![Build Status](https://travis-ci.org/Thomasgsp/ansible-hitch.svg?branch=master)](https://travis-ci.org/ThomasGsp/ansible-hitch) [![Ansible Galaxy](https://img.shields.io/badge/galaxy-ThomasGsp.hitch-blue.svg?style=flat)](https://galaxy.ansible.com/detail#/role/xxx)
 
  - Ansible 2.1+ (1.x should work but it's deprecated)
  - Compatible with most versions of Ubuntu/Debian
@@ -11,8 +11,6 @@
  1. [Installation](#installation)
  2. [Getting Started](#getting-started)
   1. [Hitch TLS - With single Varnish backend](#single-hitch-varnish)
-  2. [Master-Slave Replication](#master-slave-replication)
-  3. [Redis Sentinel](#redis-sentinel)
  3. [Advanced Options](#advanced-options)
   1. [Verifying checksums](#verifying-checksums)
   2. [Install from local tarball](#install-from-local-tarball)
