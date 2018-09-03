@@ -1,0 +1,34 @@
+[Unit]
+Description=Advanced key-value store
+After=network.target
+Documentation=https://github.com/varnish/hitch/wiki
+
+[Service]
+Type={{ 'forking' if daemonize == 'yes' else 'simple' }}
+ExecStart={{ install_dir }}/bin/hitch /etc/hitch/hitch.conf
+EnvironmentFile=-/etc/default/hitch
+PIDFile={{ pidfile }}
+TimeoutStopSec=0
+Restart=always
+User={{ user }}
+Group={{ group }}
+
+UMask=007
+PrivateTmp=yes
+PrivateDevices=yes
+ProtectHome=yes
+ReadOnlyDirectories=/
+ReadWriteDirectories=-{{ dir }}
+{% if logfile != '""' %}
+ReadWriteDirectories=-{{ logfile|dirname }}
+{% endif %}
+ReadWriteDirectories=-{{ pidfile|dirname }}
+CapabilityBoundingSet=~CAP_SYS_PTRACE
+
+# Hitch writes its own config file
+# writing there (NB. ProtectSystem=true over ProtectSystem=full)
+ProtectSystem=true
+ReadWriteDirectories=-/etc/hitch
+
+[Install]
+WantedBy=multi-user.target
