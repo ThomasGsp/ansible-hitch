@@ -1,0 +1,55 @@
+# {{ ansible_managed }}
+
+# frontend
+{% if frontend -%}
+{% for front in frontend -%}
+frontend = {
+    host = "*"
+    port = "443"
+}
+{% endfor -%}
+{% endif -%}
+
+{% if backend -%} backend = {{ backend }} {% endif -%}
+{% if keepalive -%} keepalive = {{ keepalive }} {% endif -%}
+{% if backend-refresh  -%} backend-refresh  {{ backend-refresh  }} {% endif -%}
+{% if keepalive -%} keepalive = {{ keepalive }} {% endif -%}
+{% if ocsp-dir -%} ocsp-dir = {{ ocsp-dir }} {% endif -%}
+{% if ocsp-connect-tmo -%} ocsp-connect-tmo = {{ ocsp-connect-tmo }} {% endif -%}
+{% if ocsp-resp-tmo  -%} ocsp-resp-tmo  = {{ ocsp-resp-tmo  }} {% endif -%}
+{% if ocsp-refresh-interval -%} ocsp-refresh-interval = {{ ocsp-refresh-interval }} {% endif -%}
+{% if ocsp-verify-staple -%} ocsp-verify-staple = {{ ocsp-verify-staple }} {% endif -%}
+
+
+{% if pem-file -%}
+{% for file in pem-file -%}
+pem-file = {{ file }}
+{% endfor -%}
+{% endif -%}
+
+{% if private-key -%}
+{% for file in private-key -%}
+private-key = {{ file }}
+{% endfor -%}
+{% endif -%}
+
+{% if prefer-server-ciphers -%} prefer-server-ciphers = {{ prefer-server-ciphers }} {% endif -%}
+
+{% if proxy-proxy -%} proxy-proxy = {{ proxy-proxy }} {% endif -%}
+{% if alpn-protos -%} alpn-protos = {{ alpn-protos }} {% endif -%}
+{% if tls-protos -%} tls-protos = {{ tls-protos }} {% endif -%}
+{% if ciphers -%} ciphers = {{ ciphers }} {% endif -%}
+{% if sni-nomatch-abort -%} sni-nomatch-abort = {{ sni-nomatch-abort }} {% endif -%}
+{% if ssl-engine -%} ssl-engine = {{ ssl-engine }} {% endif -%}
+{% if workers -%} workers = {{ workers }} {% endif -%}
+{% if quiet -%} quiet = {{ quiet }} {% endif -%}
+{% if syslog -%} syslog = {{ syslog }} {% endif -%}
+{% if syslog-facility -%} syslog-facility = {{ syslog-facility }} {% endif -%}
+{% if backlog -%} backlog = {{ backlog }} {% endif -%}
+{% if user -%} user = {{ user }} {% endif -%}
+{% if group -%} group = {{ group }} {% endif -%}
+{% if daemon -%} daemon = {{ daemon }} {% endif -%}
+{% if chroot -%} chroot = {{ chroot }} {% endif -%}
+{% if write-ip -%} write-ip = {{ write-ip }} {% endif -%}
+{% if write-proxy-v1 -%} write-proxy-v1 = {{ write-proxy-v1 }} {% endif -%}
+{% if write-proxy-v2 -%} write-proxy-v2 = {{ write-proxy-v2 }} {% endif -%}
