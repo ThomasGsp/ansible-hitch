@@ -1,6 +1,6 @@
 # From https://hitch-tls.org/source/SHA256SUM
 # Generate with:
-#  curl -s https://hitch-tls.org/source/SHA256SUM | sed 's/\.tar\.gz//g' | awk -F" "  '{ print $2": " $1; }'redis_checksums:
+#  curl -s https://hitch-tls.org/source/SHA256SUM | sed 's/\.tar\.gz//g' | awk -F" "  '{ print $2": " $1; }'
 
 checksums:
   hitch-1.0.0-beta1: ef8d651cb227af402931114386bd95dfcbf1b3154ac9f172e994ed7ff9f3b907
