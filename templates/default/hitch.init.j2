@@ -1,0 +1,48 @@
+#!/bin/sh
+#
+# Simple Redis init.d script conceived to work on Linux systems
+# as it does use of the /proc filesystem.
+
+
+HITCH_USER={{ user }}
+EXEC={{ install_dir }}/bin/hitch
+
+PIDFILE={{ pidfile }}
+CONF="/etc/hitch/hitch.conf"
+
+case "$1" in
+    start)
+        if [ -f $PIDFILE ]
+        then
+                echo "$PIDFILE exists, process is already running or crashed"
+        else
+                echo "Starting Hitch server..."
+                su HITCH_USER -c "$EXEC $CONF"
+        fi
+        ;;
+    stop)
+        if [ ! -f $PIDFILE ]
+        then
+                echo "$PIDFILE does not exist, process is not running"
+        else
+                PID=$(cat $PIDFILE)
+                echo "Stopping ..."
+                while [ -x /proc/${PID} ]
+                do
+                    echo "Waiting for Redis to shutdown ..."
+                    sleep 1
+                done
+                echo "Redis stopped"
+        fi
+        ;;
+    restart|force-reload)
+        ${0} stop
+        ${0} start
+        ;;
+    *)
+        echo "Usage: /etc/init.d/$NAME {start|stop|restart|force-reload}" >&2
+        exit 1
+        ;;
+esac
+
+exit 0
