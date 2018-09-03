@@ -22,7 +22,8 @@ service_name: "hitch"
 
 
 # front end option
-
+frontend        :
+  - [*]:443
 
 ## back end option
 # Default Varnish frontend
