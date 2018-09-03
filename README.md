@@ -39,13 +39,14 @@ Here's an example which we'll make a little more exciting by setting the bind ad
 - hosts: hitch01.example.com
   vars:
     - frentend: 127.0.0.1:443
-    - backemd: 127.0.0.1:6081
+    - backend: 127.0.0.1:6081
+    - pem-file: 127.0.0.1:6081
   roles:
     - Thomasgsp.hitch
 ```
 
 ``` bash
-$ ansible-playbook -i hitch01.example.com, hitch.yml
+$ ansible-playbook -i hitch01.example.com hitch.yml
 ```
 
 **Note:** You may have noticed above that I just passed a hostname in as the Ansible inventory file. This is an easy way to run Ansible without first having to create an inventory file, you just need to suffix the hostname with a comma so Ansible knows what to do with it.
