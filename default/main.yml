@@ -7,11 +7,11 @@ dir             : "/etc/hitch/"
 make_32bit      : false
 # Set this value to a local path of a tarball to use for installation instead of downloading
 tarball         : false
-# Set this to true to validate redis tarball checksum against vars/main.ym
+# Set this to true to validate hitch tarball checksum against vars/main.ym
 verify_checksum : false
 
 ## Role options
-# Configure Redis as a service
+# Configure Hitch as a service
 as_service: true
 # Add local facts to /etc/ansible/facts.d for hitch
 local_facts: true

@@ -65,16 +65,17 @@ Due to differences in the `get_url` module in Ansible 1.x and Ansible 2.x, this 
 
 #### Ansible 1.x
 
-In Ansible 1.x, the `get_url` module only supports verifying sha256 checksums, which are not provided by default. If you wish to set `redis_verify_checksum`, you must also define a sha256 checksum with the `redis_checksum` variable.
+In Ansible 1.x, the `get_url` module only supports verifying sha256 checksums, which are not provided by default.
+If you wish to set `verify_checksum`, you must also define a sha256 checksum with the `checksum` variable.
 
 ``` yaml
-- name: install redis on ansible 1.x and verify checksums
+- name: install hitch on ansible 1.x and verify checksums
   hosts: all
   roles:
-    - role: DavidWittman.redis
-      redis_version: 3.0.7
-      redis_verify_checksum: true
-      redis_checksum: b2a791c4ea3bb7268795c45c6321ea5abcc24457178373e6a6e3be6372737f23
+    - role: Thomasgsp.hitch
+      version: 1.4.8
+      verify_checksum: true
+      checksum: d52ba690d90c25bbfca73f5e0ed427738366dac12faf46fb5834e497cc2d1ac3
 ```
 
 #### Ansible 2.x
@@ -83,7 +84,7 @@ When using Ansible 2.x, this role will verify the sha1 checksum of the download 
 If your version is not defined in here or you wish to override the checksum with one of your own, simply set the `checksum` variable. As in the example below, you will need to prefix the checksum with the type of hash which you are using.
 
 ``` yaml
-- name: install redis on ansible 1.x and verify checksums
+- name: install hitch on ansible 1.x and verify checksums
   hosts: all
   roles:
     - role: Thomasgsp.hitch
@@ -126,11 +127,11 @@ dir             : "/etc/hitch/"
 make_32bit      : false
 # Set this value to a local path of a tarball to use for installation instead of downloading
 tarball         : false
-# Set this to true to validate redis tarball checksum against vars/main.ym
+# Set this to true to validate hitch tarball checksum against vars/main.ym
 verify_checksum : false
 
 ## Role options
-# Configure Redis as a service
+# Configure Hitch as a service
 as_service: true
 # Add local facts to /etc/ansible/facts.d for hitch
 local_facts: true
