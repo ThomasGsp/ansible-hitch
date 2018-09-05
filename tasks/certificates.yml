@@ -9,3 +9,8 @@
     privatekey_path: /etc/hitch/certs/default.key
     csr_path: /etc/hitch/certs/default.csr
     provider: selfsigned
+
+- name: Convert default to pem
+  shell: cat /etc/hitch/certs/default.key /etc/hitch/certs/default.crt > /etc/hitch/certs/default.pem
+  args:
+    executable: /bin/bash

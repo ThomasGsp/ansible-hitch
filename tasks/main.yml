@@ -13,6 +13,10 @@
   tags:
     - install
 
+- include: certificates.yml
+  tags:
+    - certs
+
 - include: hitch.yml
   when: not redis_sentinel
   tags:
