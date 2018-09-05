@@ -18,9 +18,8 @@
     - certs
 
 - include: hitch.yml
-  when: not redis_sentinel
   tags:
     - config
 
 - include: local_facts.yml
-  when: redis_local_facts|bool
+  when: local_facts|bool

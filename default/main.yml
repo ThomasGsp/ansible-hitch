@@ -34,7 +34,6 @@ keepalive       : 3600
 # Periodic backend IP lookup, 0 to disable
 backend-refresh : 0
 
-
 ## ocsp options
 # Set OCSP staple cache directory This enables automated retrieval and stapling of OCSP responses
 ocsp-dir          :
@@ -65,7 +64,6 @@ ssl-engine      :
 
 # Number of worker processes
 workers         : 2
-
 
 ## Daemon options
 # Be quiet; emit only error messages
