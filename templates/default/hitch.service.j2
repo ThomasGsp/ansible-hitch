@@ -4,7 +4,7 @@ After=network.target
 Documentation=https://github.com/varnish/hitch/wiki
 
 [Service]
-Type={{ 'forking' if daemonize == 'True' else 'simple' }}
+Type={{ 'forking' if daemonize == 'true' else 'simple' }}
 LimitNOFILE=131072
 Restart=on-failure
 
