@@ -39,31 +39,31 @@ backend_refresh : 0
 
 ## ocsp options
 # Set OCSP staple cache directory This enables automated retrieval and stapling of OCSP responses
-ocsp-dir          :
-ocsp-connect-tmo  :
-ocsp-resp-tmo     :
-ocsp-refresh-interval :
-ocsp-verify-staple    :
+ocsp_dir          :
+ocsp_connect_tmo  :
+ocsp_resp_tmo     :
+ocsp_refresh_interval :
+ocsp_verify_staple    :
 
 # Pem cert list
-pem-file        :
+pem_file        :
   -  "/etc/hitch/certs/default.pem"
 
-private-key     :
-prefer-server-ciphers :
-proxy-proxy     : off
+private_key     :
+prefer_server_ciphers :
+proxy_proxy     : off
 
 # Sets the protocols for ALPN/NPN negotiation, given by a comma separated list.
 # If this is not set explicitly, ALPN/NPN will not be used. Requires OpenSSL 1.0.1 for NPN and OpenSSL 1.0.2 for ALPN.
-alpn-protos     : "h2,http/1.1"
+alpn_protos     : "h2,http/1.1"
 # All TLS versions, no SSLv3 (deprecated)
-tls-protos      : "TLSv1.1 TLSv1.2"
+tls_protos      : "TLSv1.1 TLSv1.2"
 # Sets allowed ciphers
 ciphers         : "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH"
 # Abort handshake when client submits an unrecognized SNI server name
-sni-nomatch-abort : off
+sni_nomatch_abort : off
 # Sets OpenSSL engine
-ssl-engine      :
+ssl_engine      :
 
 # Number of worker processes
 workers         : 2
@@ -74,7 +74,7 @@ quiet           : on
 # Send log message to syslog in addition to stderr/stdout
 syslog          : on
 # Syslog facility to use
-syslog-facility : daemon
+syslog_facility : daemon
 # Set listen backlog size
 backlog         : 100
 # Set uid/gid after binding the socket
@@ -87,8 +87,8 @@ daemon          : on
 chroot          : /etc/hitch
 # Write 1 octet with the IP family followed by the IP address in 4 (IPv4) or 16 (IPv6) octets
 # little-endian to backend before the actual data
-write-ip        : off
+write_ip        : off
 # Write HaProxy's PROXY v1 (IPv4 or IPv6) protocol line before actual data
-write-proxy-v1  : off
+write_proxy_v1  : off
 # Write HaProxy's PROXY v2 binary (IPv4 or IPv6) protocol line before actual data
-write-proxy-v2  : on
+write_proxy_v2  : on
