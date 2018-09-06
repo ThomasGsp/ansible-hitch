@@ -18,16 +18,6 @@ frontend = {
 
 {% if keepalive %}keepalive = {{ keepalive }} {% endif %}
 
-{% if ocsp_dir %}ocsp-dir = {{ ocsp_dir }} {% endif %}
-
-{% if ocsp_connect_tmo %}ocsp_connect-tmo = {{ ocsp_connect_tmo }} {% endif %}
-
-{% if ocsp_resp_tmo  %}ocsp-resp-tmo  = {{ ocsp_resp_tmo  }} {% endif %}
-
-{% if ocsp_refresh_interval %}ocsp_refresh_interval = {{ ocsp_refresh_interval }} {% endif %}
-
-{% if ocsp_verify_staple %}ocsp_verify_staple = {{ ocsp_verify_staple }} {% endif %}
-
 
 {% if pem_file %}
 {% for file in pem_file %}
@@ -78,3 +68,13 @@ private_key = {{ file }}
 {% if write_proxy_v1 %}write_proxy_v1 = {{ write_proxy_v1 }} {% endif %}
 
 {% if write_proxy_v2 %}write_proxy_v2 = {{ write_proxy_v2 }} {% endif %}
+
+{% if ocsp_dir %}ocsp-dir = {{ ocsp_dir }} {% endif %}
+
+{% if ocsp_connect_tmo %}ocsp_connect-tmo = {{ ocsp_connect_tmo }} {% endif %}
+
+{% if ocsp_resp_tmo  %}ocsp-resp-tmo  = {{ ocsp_resp_tmo  }} {% endif %}
+
+{% if ocsp_refresh_interval %}ocsp_refresh_interval = {{ ocsp_refresh_interval }} {% endif %}
+
+{% if ocsp_verify_staple %}ocsp_verify_staple = {{ ocsp_verify_staple }} {% endif %}

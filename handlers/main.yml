@@ -1,6 +1,6 @@
 ---
 - name: "restart hitch"
   service:
-    name: "{{ hitch_service_name }}"
+    name: "{{ service_name }}"
     state: restarted
-  when: hitch_as_service
+  when: as_service
