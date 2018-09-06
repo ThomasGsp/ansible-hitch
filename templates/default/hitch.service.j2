@@ -5,7 +5,7 @@ Documentation=https://github.com/varnish/hitch/wiki
 
 [Service]
 Type={{ 'forking' if daemonize == 'yes' else 'simple' }}
-ExecStart={{ install_dir }}/bin/hitch /etc/hitch/hitch.conf
+ExecStart={{ install_dir }}/sbin/hitch /etc/hitch/hitch.conf
 EnvironmentFile=-/etc/default/hitch
 PIDFile={{ pidfile }}
 TimeoutStopSec=0

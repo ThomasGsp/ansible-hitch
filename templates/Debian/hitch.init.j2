@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Redis init script for Debian-based distros
+# Hitch init script for Debian-based distros
 #
 #
 ### BEGIN INIT INFO
@@ -12,24 +12,19 @@
 # Should-Start:      $syslog $named
 # Should-Stop:       $syslog $named
 # Short-Description: Start and stop Hitch ()
-# Description:       Redis key-value store
+# Description:       Hitch key-value store
 ### END INIT INFO
 
 # Source the Linux Standard Base functions
 . /lib/lsb/init-functions
 
 NAME=hitch
-DAEMON={{ install_dir }}/bin/hitch
+DAEMON={{ install_dir }}/sbin/hitch
 PIDFILE={{ pidfile }}
 PIDFILE_DIR=$(dirname "${PIDFILE}")
 
 HITCH_USER={{ user }}
 CONF="/etc/hitch/hitch.conf"
-
-if [ -r /etc/default/hitch ]; then
-    . /etc/default/hitch
-fi
-
 
 case "$1" in
     start)
@@ -60,7 +55,7 @@ case "$1" in
             log_daemon_msg "Stopping $NAME..."
             $CLIEXEC shutdown
             while [ -x /proc/${PID} ]; do
-                log_daemon_msg "Waiting for Redis to shutdown ..."
+                log_daemon_msg "Waiting for Hitch to shutdown ..."
                 sleep 1
             done
             log_end_msg 0
