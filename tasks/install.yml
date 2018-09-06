@@ -37,7 +37,7 @@
 
 - name: add hitch user
   user:
-    name: "{{ _user }}"
+    name: "{{ user }}"
     group: "{{ group }}"
     comment: "HitchTLS"
     home: "{{ install_dir }}"
