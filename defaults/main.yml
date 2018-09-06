@@ -35,7 +35,7 @@ backend         : "127.0.0.1:6081"
 keepalive       : 3600
 
 # Periodic backend IP lookup, 0 to disable
-backend-refresh : 0
+backend_refresh : 0
 
 ## ocsp options
 # Set OCSP staple cache directory This enables automated retrieval and stapling of OCSP responses
