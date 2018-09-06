@@ -38,7 +38,7 @@ private_key = {{ file }}
 
 {% if proxy_proxy -%} proxy_proxy = {{ proxy_proxy }} {% endif -%}
 {% if alpn_protos -%} alpn_protos = {{ alpn_protos }} {% endif -%}
-{% if tls_protos -%} tls_protos = {{ tls-protos }} {% endif -%}
+{% if tls_protos -%} tls_protos = {{ tls_protos }} {% endif -%}
 {% if ciphers -%} ciphers = {{ ciphers }} {% endif -%}
 {% if sni_nomatch_abort -%} sni_nomatch_abort = {{ sni_nomatch_abort }} {% endif -%}
 {% if ssl_engine -%} ssl_engine = {{ ssl_engine }} {% endif -%}
