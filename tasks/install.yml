@@ -64,7 +64,6 @@
 
 - name: add hitch binaries to alternatives
   alternatives:
-    name: "{{ item }}"
-    path: "{{ install_dir }}/sbin/{{ item }}"
-    link: "/usr/sbin/{{ item }}"
-  with_items: "{{ binaries.stdout_lines }}"
+    name: "hitch"
+    path: "{{ install_dir }}/sbin/hitch"
+    link: "/usr/sbin/hitch"
