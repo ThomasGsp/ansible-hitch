@@ -13,7 +13,6 @@ verify_checksum : false
 ## Role options
 # Configure Hitch as a service
 as_service: true
-daemonize: true
 pidfile: /var/run/hitch/hitch.pid
 logfile: /var/log/hitch.log
 # Add local facts to /etc/ansible/facts.d for hitch
