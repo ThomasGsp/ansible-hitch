@@ -40,7 +40,7 @@ Here's an example which we'll make a little more exciting by setting the bind ad
   vars:
     - frentend: 127.0.0.1:443
     - backend: 127.0.0.1:6081
-    - pem-file: 127.0.0.1:6081
+    - pem-file: ["/etc/hitch/certs/default.pem"]
   roles:
     - Thomasgsp.hitch
 ```
