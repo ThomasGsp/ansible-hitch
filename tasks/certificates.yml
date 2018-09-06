@@ -11,7 +11,7 @@
   openssl_csr:
     path: /etc/hitch/certs/default.csr
     privatekey_path: /etc/hitch/certs/default.key
-    common_name: "{{ server_hostname }}"
+    common_name: "{{ ansible_hostname }}"
 
 - name: Generate a Self Signed OpenSSL certificate.
   openssl_certificate:
