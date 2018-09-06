@@ -6,6 +6,12 @@
 frontend = {
     host = "{{ front.split(":")[0] }}"
     port = "{{ front.split(":")[1] }}"
+
+    {% if frontend.pem_file is definited %}
+    {% for pem in frontend.pem_file %}
+        pem-file = "{{ pem }}"
+    {% endfor %}
+    {% endif %}
 }
 {% endfor %}
 {% endif %}
