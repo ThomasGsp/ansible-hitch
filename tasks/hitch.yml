@@ -6,6 +6,15 @@
     recurse: yes
     owner: "{{ user }}"
 
+- name: create hitch oscp directory
+  file:
+    path: "{{ ocsp_dir }}"
+    state: directory
+    recurse: yes
+    owner: "{{ user }}"
+
+
+
 - name: create hitch init script
   template:
     src: "{{ item }}"

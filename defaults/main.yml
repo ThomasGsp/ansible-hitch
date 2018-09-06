@@ -39,7 +39,7 @@ backend_refresh : 0
 
 ## ocsp options
 # Set OCSP staple cache directory This enables automated retrieval and stapling of OCSP responses
-ocsp_dir          :
+ocsp_dir          : "/var/lib/hitch/"
 ocsp_connect_tmo  :
 ocsp_resp_tmo     :
 ocsp_refresh_interval :
