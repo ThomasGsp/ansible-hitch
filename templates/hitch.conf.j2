@@ -4,11 +4,11 @@
 {% if frontend %}
 {% for front in frontend %}
 frontend = {
-    host = "{{ bind.split(":")[0] }}"
-    port = "{{ bind.split(":")[1] }}"
+    host = "{{ front.bind.split(":")[0] }}"
+    port = "{{ front.bind.split(":")[1] }}"
 
-    {% if frontend.pem_file is defined %}
-    {% for pem in frontend.pem_file %}
+    {% if front.pem_file is defined %}
+    {% for pem in front.pem_file %}
         pem-file = "{{ pem }}"
     {% endfor %}
     {% endif %}
