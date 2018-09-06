@@ -36,7 +36,7 @@ private-key = "{{ file }}"
 
 {% if tls_protos %}tls-protos = {{ tls_protos }} {% endif %}
 
-{% if ciphers %}ciphers = {{ ciphers }} {% endif %}
+{% if ciphers %}ciphers = "{{ ciphers }}" {% endif %}
 
 {% if sni_nomatch_abort %}sni-nomatch-abort = {{ sni_nomatch_abort }} {% endif %}
 
@@ -58,13 +58,13 @@ private-key = "{{ file }}"
 
 {% if daemon %}daemon = {{ daemon }} {% endif %}
 
-{% if chroot %}chroot = {{ chroot }} {% endif %}
+{% if chroot %}chroot = "{{ chroot }}" {% endif %}
 
 {% if write_ip %}write-ip = {{ write_ip }} {% endif %}
 
-{% if write_proxy_v1 %}write-proxy_v1 = {{ write_proxy_v1 }} {% endif %}
+{% if write_proxy_v1 %}write-proxy-v1 = {{ write_proxy_v1 }} {% endif %}
 
-{% if write_proxy_v2 %}write-proxy_v2 = {{ write_proxy_v2 }} {% endif %}
+{% if write_proxy_v2 %}write-proxy-v2 = {{ write_proxy_v2 }} {% endif %}
 
 {% if ocsp_dir %}ocsp-dir = "{{ ocsp_dir }}" {% endif %}
 
