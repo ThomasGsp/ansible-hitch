@@ -4,7 +4,7 @@ After=network.target
 Documentation=https://github.com/varnish/hitch/wiki
 
 [Service]
-Type={{ 'forking' if daemonize == 'yes' else 'simple' }}
+Type={{ 'forking' if daemonize == 'True' else 'simple' }}
 LimitNOFILE=131072
 Restart=on-failure
 
@@ -16,10 +16,6 @@ Environment="HITCH_OPTIONS=--config /etc/hitch/hitch.conf"
 ExecStartPre={{ install_dir }}/sbin/hitch -t $HITCH_OPTIONS
 ExecStart={{ install_dir }}/sbin/hitch --daemon $HITCH_OPTIONS
 ExecReload=/bin/kill -HUP $MAINPID
-
-PIDFile={{ pidfile }}
-#TimeoutStopSec=0
-
 
 UMask=007
 PrivateTmp=yes
