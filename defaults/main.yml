@@ -58,7 +58,7 @@ proxy_proxy     : off
 # If this is not set explicitly, ALPN/NPN will not be used. Requires OpenSSL 1.0.1 for NPN and OpenSSL 1.0.2 for ALPN.
 alpn_protos     : "h2,http/1.1"
 # All TLS versions, no SSLv3 (deprecated)
-tls_protos      : "TLSv1.1 TLSv1.2"
+tls_protos      : "TLSv1.0 TLSv1.1 TLSv1.2 SSLv3"
 # Sets allowed ciphers
 ciphers         : "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH"
 # Abort handshake when client submits an unrecognized SNI server name
