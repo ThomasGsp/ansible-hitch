@@ -6,19 +6,20 @@ Documentation=https://github.com/varnish/hitch/wiki
 [Service]
 Type={{ 'forking' if daemonize == 'yes' else 'simple' }}
 LimitNOFILE=131072
-
-Environment="HITCH_OPTIONS=--config /etc/hitch/hitch.conf"
-ExecStartPre={{ install_dir }}/sbin/hitch -t $HITCH_OPTIONS
-ExecStart={{ install_dir }}/sbin/hitch --daemon $HITCH_OPTIONS
-ExecReload=/bin/kill -HUP $MAINPID
+Restart=on-failure
 
 EnvironmentFile=-/etc/hitch/hitch.params
 EnvironmentFile=-/etc/default/hitch
 EnvironmentFile=-/etc/sysconfig/hitch
+Environment="HITCH_OPTIONS=--config /etc/hitch/hitch.conf"
+
+ExecStartPre={{ install_dir }}/sbin/hitch -t $HITCH_OPTIONS
+ExecStart={{ install_dir }}/sbin/hitch --daemon $HITCH_OPTIONS
+ExecReload=/bin/kill -HUP $MAINPID
 
 PIDFile={{ pidfile }}
-TimeoutStopSec=0
-Restart=always
+#TimeoutStopSec=0
+
 
 UMask=007
 PrivateTmp=yes
@@ -32,7 +33,7 @@ ReadWriteDirectories=-{{ logfile|dirname }}
 ReadWriteDirectories=-{{ pidfile|dirname }}
 CapabilityBoundingSet=~CAP_SYS_PTRACE
 
-# Hitch can writes its own config file
+# Hitch user can writes its own config file
 # writing there (NB. ProtectSystem=true over ProtectSystem=full)
 ProtectSystem=true
 ReadWriteDirectories=-/etc/hitch
