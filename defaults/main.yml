@@ -13,6 +13,7 @@ verify_checksum : false
 ## Role options
 # Configure Hitch as a service
 as_service: true
+daemonize: true
 # Add local facts to /etc/ansible/facts.d for hitch
 local_facts: true
 # Service name
