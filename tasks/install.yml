@@ -1,9 +1,17 @@
 ---
-- name: compile hitch
+
+
+- name: compile hitch - configure
+  command: configure
+  args:
+    chdir: /usr/local/src/hitch-{{ version }}
+
+- name: compile hitch - make
   command: make -j{{ ansible_processor_cores|default(1) + 1 }}{{ ' 32bit' if make_32bit|bool else '' }}
   args:
     chdir: /usr/local/src/hitch-{{ version }}
     creates: /usr/local/src/hitch-{{ version }}/src/hitch-tls
+
 
 - name: create hitch install directory
   file:
