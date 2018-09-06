@@ -1,56 +1,56 @@
 # {{ ansible_managed }}
 
 # frontend
-{% if frontend -%}
-{% for front in frontend -%}
+{% if frontend %}
+{% for front in frontend %}
 frontend = {
     host = '{{ front.split(":")[0] }}'
     port = '{{ front.split(":")[1] }}'
 }
-{% endfor -%}
-{% endif -%}
+{% endfor %}
+{% endif %}
 
-{% if backend %} backend = {{ backend }} {% endif %}
+{% if backend %}backend = {{ backend }} {% endif %}
 
-{% if keepalive -%} keepalive = {{ keepalive }} {% endif -%}
-{% if backend_refresh  -%} backend_refresh  {{ backend_refresh  }} {% endif -%}
-{% if keepalive -%} keepalive = {{ keepalive }} {% endif -%}
-{% if ocsp_dir -%} ocsp-dir = {{ ocsp_dir }} {% endif -%}
-{% if ocsp_connect_tmo -%} ocsp_connect-tmo = {{ ocsp_connect_tmo }} {% endif -%}
-{% if ocsp_resp_tmo  -%} ocsp-resp-tmo  = {{ ocsp_resp_tmo  }} {% endif -%}
-{% if ocsp_refresh_interval -%} ocsp_refresh_interval = {{ ocsp_refresh_interval }} {% endif -%}
-{% if ocsp_verify_staple -%} ocsp_verify_staple = {{ ocsp_verify_staple }} {% endif -%}
+{% if keepalive %}keepalive = {{ keepalive }} {% endif %}
+{% if backend_refresh  %}backend_refresh  {{ backend_refresh  }} {% endif %}
+{% if keepalive %}keepalive = {{ keepalive }} {% endif %}
+{% if ocsp_dir %}ocsp-dir = {{ ocsp_dir }} {% endif %}
+{% if ocsp_connect_tmo %}ocsp_connect-tmo = {{ ocsp_connect_tmo }} {% endif %}
+{% if ocsp_resp_tmo  %}ocsp-resp-tmo  = {{ ocsp_resp_tmo  }} {% endif %}
+{% if ocsp_refresh_interval %}ocsp_refresh_interval = {{ ocsp_refresh_interval }} {% endif %}
+{% if ocsp_verify_staple %}ocsp_verify_staple = {{ ocsp_verify_staple }} {% endif %}
 
 
-{% if pem_file -%}
-{% for file in pem_file -%}
+{% if pem_file %}
+{% for file in pem_file %}
 pem_file = {{ file }}
-{% endfor -%}
-{% endif -%}
+{% endfor %}
+{% endif %}
 
-{% if private_key -%}
-{% for file in private_key -%}
+{% if private_key %}
+{% for file in private_key %}
 private_key = {{ file }}
-{% endfor -%}
-{% endif -%}
+{% endfor %}
+{% endif %}
 
-{% if prefer_server_ciphers -%} prefer_server_ciphers = {{ prefer_server_ciphers }} {% endif -%}
+{% if prefer_server_ciphers %}prefer_server_ciphers = {{ prefer_server_ciphers }} {% endif %}
 
-{% if proxy_proxy -%} proxy_proxy = {{ proxy_proxy }} {% endif -%}
-{% if alpn_protos -%} alpn_protos = {{ alpn_protos }} {% endif -%}
-{% if tls_protos -%} tls_protos = {{ tls_protos }} {% endif -%}
-{% if ciphers -%} ciphers = {{ ciphers }} {% endif -%}
-{% if sni_nomatch_abort -%} sni_nomatch_abort = {{ sni_nomatch_abort }} {% endif -%}
-{% if ssl_engine -%} ssl_engine = {{ ssl_engine }} {% endif -%}
-{% if workers -%} workers = {{ workers }} {% endif -%}
-{% if quiet -%} quiet = {{ quiet }} {% endif -%}
-{% if syslog -%} syslog = {{ syslog }} {% endif -%}
-{% if syslog_facility -%} syslog_facility = {{ syslog_facility }} {% endif -%}
-{% if backlog -%} backlog = {{ backlog }} {% endif -%}
-{% if user -%} user = {{ user }} {% endif -%}
-{% if group -%} group = {{ group }} {% endif -%}
-{% if daemon -%} daemon = {{ daemon }} {% endif -%}
-{% if chroot -%} chroot = {{ chroot }} {% endif -%}
-{% if write_ip -%} write_ip = {{ write_ip }} {% endif -%}
-{% if write_proxy_v1 -%} write_proxy_v1 = {{ write_proxy_v1 }} {% endif -%}
-{% if write_proxy_v2 -%} write_proxy_v2 = {{ write_proxy_v2 }} {% endif -%}
+{% if proxy_proxy %}proxy_proxy = {{ proxy_proxy }} {% endif %}
+{% if alpn_protos %}alpn_protos = {{ alpn_protos }} {% endif %}
+{% if tls_protos %}tls_protos = {{ tls_protos }} {% endif %}
+{% if ciphers %}ciphers = {{ ciphers }} {% endif %}
+{% if sni_nomatch_abort %}sni_nomatch_abort = {{ sni_nomatch_abort }} {% endif %}
+{% if ssl_engine %}ssl_engine = {{ ssl_engine }} {% endif %}
+{% if workers %}workers = {{ workers }} {% endif %}
+{% if quiet %}quiet = {{ quiet }} {% endif %}
+{% if syslog %}syslog = {{ syslog }} {% endif %}
+{% if syslog_facility %}syslog_facility = {{ syslog_facility }} {% endif %}
+{% if backlog %}backlog = {{ backlog }} {% endif %}
+{% if user %}user = {{ user }} {% endif %}
+{% if group %}group = {{ group }} {% endif %}
+{% if daemon %}daemon = {{ daemon }} {% endif %}
+{% if chroot %}chroot = {{ chroot }} {% endif %}
+{% if write_ip %}write_ip = {{ write_ip }} {% endif %}
+{% if write_proxy_v1 %}write_proxy_v1 = {{ write_proxy_v1 }} {% endif %}
+{% if write_proxy_v2 %}write_proxy_v2 = {{ write_proxy_v2 }} {% endif %}
