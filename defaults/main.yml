@@ -23,14 +23,15 @@ service_name: "hitch"
 
 ## front end option
 # Hitch accept several frontend definition
-# brackets are mandatory in endpoint specifiers.
+# brackets are mandatory .
 frontend        :
   - "[*]:443"
 
 ## back end option
 # Default Varnish backend (IP:PORT)
 # Can also take a UNIX domain socket path E.g. backend="/path/to/sock"
-backend         : "127.0.0.1:6081"
+# brackets are mandatory .
+backend         : "[127.0.0.1]:6081"
 #TCP keepalive on client socket
 keepalive       : 3600
 

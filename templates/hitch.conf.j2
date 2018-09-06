@@ -10,7 +10,7 @@ frontend = {
 {% endfor %}
 {% endif %}
 
-{% if backend %}backend = {{ backend }} {% endif %}
+{% if backend %}backend = "{{ backend }}" {% endif %}
 
 {% if keepalive %}keepalive = {{ keepalive }} {% endif %}
 
