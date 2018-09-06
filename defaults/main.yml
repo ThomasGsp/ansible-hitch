@@ -14,6 +14,8 @@ verify_checksum : false
 # Configure Hitch as a service
 as_service: true
 daemonize: true
+pidfile: /var/run/hitch/hitch.pid
+pidfile
 # Add local facts to /etc/ansible/facts.d for hitch
 local_facts: true
 # Service name
