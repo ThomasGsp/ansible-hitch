@@ -148,7 +148,6 @@ verify_checksum : false
 ## Role options
 # Configure Hitch as a service
 as_service: true
-daemonize: true
 pidfile: /var/run/hitch/hitch.pid
 logfile: /var/log/hitch.log
 # Add local facts to /etc/ansible/facts.d for hitch
@@ -158,14 +157,15 @@ service_name: "hitch"
 
 ## front end option
 # Hitch accept several frontend definition
-# brackets are mandatory in endpoint specifiers.
-frontend        :
-  - "[*]:443"
+frontend:
+  - bind: "*:443"
+  #- bind: "*:4443"
 
 ## back end option
 # Default Varnish backend (IP:PORT)
 # Can also take a UNIX domain socket path E.g. backend="/path/to/sock"
-backend         : "127.0.0.1:6081"
+# brackets are mandatory .
+backend         : "[127.0.0.1]:6081"
 #TCP keepalive on client socket
 keepalive       : 3600
 
@@ -174,7 +174,7 @@ backend_refresh : 0
 
 ## ocsp options
 # Set OCSP staple cache directory This enables automated retrieval and stapling of OCSP responses
-ocsp_dir          :
+ocsp_dir          : "/var/lib/hitch/"
 ocsp_connect_tmo  :
 ocsp_resp_tmo     :
 ocsp_refresh_interval :
@@ -192,7 +192,7 @@ proxy_proxy     : off
 # If this is not set explicitly, ALPN/NPN will not be used. Requires OpenSSL 1.0.1 for NPN and OpenSSL 1.0.2 for ALPN.
 alpn_protos     : "h2,http/1.1"
 # All TLS versions, no SSLv3 (deprecated)
-tls_protos      : "TLSv1.1 TLSv1.2"
+tls_protos      : "TLSv1.0 TLSv1.1 TLSv1.2 SSLv3"
 # Sets allowed ciphers
 ciphers         : "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH"
 # Abort handshake when client submits an unrecognized SNI server name
@@ -200,8 +200,8 @@ sni_nomatch_abort : off
 # Sets OpenSSL engine
 ssl_engine      :
 
-# Number of worker processes
-workers         : 2
+# Number of worker processes.
+workers         : 1
 
 ## Daemon options
 # Be quiet; emit only error messages
