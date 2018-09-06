@@ -55,7 +55,7 @@
   command: make PREFIX={{ install_dir }} install
   args:
     chdir: /usr/local/src/hitch-{{ version }}
-    creates: "{{ install_dir }}/bins/hitch"
+    creates: "{{ install_dir }}/sbin/hitch"
 
 - name: list hitch binaries to add to alternatives
   command: ls -1 {{ install_dir }}/sbin
