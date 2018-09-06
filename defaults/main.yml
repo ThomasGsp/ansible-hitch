@@ -23,9 +23,8 @@ service_name: "hitch"
 
 ## front end option
 # Hitch accept several frontend definition
-# brackets are mandatory .
 frontend        :
-  - "[*]:443"
+  - "*:443"
 
 ## back end option
 # Default Varnish backend (IP:PORT)
