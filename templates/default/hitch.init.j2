@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Simple Redis init.d script conceived to work on Linux systems
+# Simple Hitch init.d script conceived to work on Linux systems
 # as it does use of the /proc filesystem.
 
 
@@ -29,10 +29,10 @@ case "$1" in
                 echo "Stopping ..."
                 while [ -x /proc/${PID} ]
                 do
-                    echo "Waiting for Redis to shutdown ..."
+                    echo "Waiting for Hitch to shutdown ..."
                     sleep 1
                 done
-                echo "Redis stopped"
+                echo "Hitch stopped"
         fi
         ;;
     restart|force-reload)
