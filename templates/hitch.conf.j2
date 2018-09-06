@@ -16,9 +16,6 @@ frontend = {
 
 {% if backend_refresh  %}backend_refresh  {{ backend_refresh  }} {% endif %}
 
-{% if keepalive %}keepalive = {{ keepalive }} {% endif %}
-
-
 {% if pem_file %}
 {% for file in pem_file %}
 pem_file = {{ file }}
