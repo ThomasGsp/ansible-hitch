@@ -34,14 +34,6 @@ This role expects to be run as root or as a user with sudo privileges.
 Deploying a single Hitch server node is pretty trivial; just add the role to your playbook and go.
 Here's an example which we'll make a little more exciting by setting the bind address to 127.0.0.1:
 
-
-
-## back end option
-# Default Varnish backend (IP:PORT)
-# Can also take a UNIX domain socket path E.g. backend="/path/to/sock"
-# brackets are mandatory .
-
-
 ``` yml
 ---
 - hosts: hitch01.example.com
@@ -51,9 +43,10 @@ Here's an example which we'll make a little more exciting by setting the bind ad
         pem_file:
           - "/etc/hitch/certs/default.pem"
 
-      - bind: "*:5443"
-        pem_file:
-          - "/etc/hitch/certs/default.pem"
+      # Secondary bind
+      #- bind: "*:5443"
+      #  pem_file:
+      #    - "/etc/hitch/certs/default.pem"
 
     backend: "[127.0.0.1]:6081"
 
