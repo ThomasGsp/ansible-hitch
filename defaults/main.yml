@@ -22,8 +22,9 @@ service_name: "hitch"
 
 ## front end option
 # Hitch accept several frontend definition
-frontend        :
-  - "*:443"
+frontend:
+  - bind: "*:443"
+  #- bind: "*:4443"
 
 ## back end option
 # Default Varnish backend (IP:PORT)
@@ -64,8 +65,8 @@ sni_nomatch_abort : off
 # Sets OpenSSL engine
 ssl_engine      :
 
-# Number of worker processes
-workers         : 2
+# Number of worker processes.
+workers         : 1
 
 ## Daemon options
 # Be quiet; emit only error messages
