@@ -1,12 +1,11 @@
 # {{ ansible_managed }}
 
 # frontend
-{% if frontend %}
+{% if frontend is defined %}
 {% for front in frontend %}
 frontend = {
 host = "{{ front.bind.split(":")[0] }}"
 port = "{{ front.bind.split(":")[1] }}"
-
 {% if front.pem_file is defined %}
 {% for pem in front.pem_file %}
 pem-file = "{{ pem }}"
