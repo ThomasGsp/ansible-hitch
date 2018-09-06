@@ -4,8 +4,8 @@
 {% if frontend %}
 {% for front in frontend %}
 frontend = {
-    host = '{{ front.split(":")[0] }}'
-    port = '{{ front.split(":")[1] }}'
+    host = "{{ front.split(":")[0] }}"
+    port = "{{ front.split(":")[1] }}"
 }
 {% endfor %}
 {% endif %}
