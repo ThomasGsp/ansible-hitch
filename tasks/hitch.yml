@@ -107,7 +107,7 @@
     dest: /etc/hitch/hitch.conf
     owner: "{{ user }}"
     mode: 0640
-  notify: "restart hitch {{ port }}"
+  notify: "restart hitch"
 
 - name: add hitch init config file
   template:
