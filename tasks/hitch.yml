@@ -117,13 +117,13 @@
   when: ansible_os_family == "RedHat"
   notify: "restart hitch"
 
-- name: add hitch init config file
-  template:
-    dest: /etc/default/{{ service_name }}
-    src: hitch.init.conf.j2
-    mode: 0600
-  when: ansible_os_family == "Debian"
-  notify: "restart hitch"
+#- name: add hitch init config file
+#  template:
+#    dest: /etc/default/{{ service_name }}
+#    src: hitch.init.conf.j2
+#    mode: 0600
+#  when: ansible_os_family == "Debian"
+#  notify: "restart hitch"
 
 # Flush handlers before ensuring the service is started to prevent
 # a start and then restart
