@@ -2,7 +2,7 @@
 
 
 - name: compile hitch - configure
-  command: ./configure
+  command: ./configure --prefix={{ install_dir }}
   args:
     chdir: /usr/local/src/hitch-{{ version }}
 
