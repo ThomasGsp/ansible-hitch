@@ -32,7 +32,6 @@ This role expects to be run as root or as a user with sudo privileges.
 ### Hitch TLS - With single Varnish backend
 
 Deploying a single Hitch server node is pretty trivial; just add the role to your playbook and go.
-Here's an example which we'll make a little more exciting by setting the bind address to 127.0.0.1:
 
 ``` yml
 ---
