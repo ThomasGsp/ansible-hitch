@@ -23,7 +23,7 @@
 ## Installation
 
 ``` bash
-$ ansible-galaxy install thomasgsp.hitch
+$ ansible-galaxy install thomasgsp/ansible-hitch
 ```
 
 ## Getting started

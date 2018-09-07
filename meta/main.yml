@@ -2,7 +2,7 @@
 galaxy_info:
   author: Thomas Guiseppin
   description: Highly configurable role to install Hitch TLS proxy (hitch-tls.org)
-  min_ansible_version: 2.2
+  min_ansible_version: 2.4
   license: MIT
   platforms:
     - name: Ubuntu
