@@ -1,6 +1,6 @@
 # ansible-hitch
 
-[![Build Status](https://api.travis-ci.org/ThomasGsp/ansible-hitch.svg?branch=master)](https://travis-ci.org/ThomasGsp/ansible-hitch) [![Ansible Galaxy](https://img.shields.io/badge/galaxy-ThomasGsp.hitch-blue.svg?style=flat)](https://galaxy.ansible.com/detail#/role/xxx)
+[![Build Status](https://api.travis-ci.org/ThomasGsp/ansible-hitch.svg?branch=master)](https://travis-ci.org/ThomasGsp/ansible-hitch) [![Ansible Galaxy](https://img.shields.io/badge/galaxy-ThomasGsp.hitch-blue.svg?style=flat)](https://galaxy.ansible.com/thomasgsp/ansible-hitch)
 
  - Ansible 2.4+
  - Compatible with most versions of Ubuntu/Debian
