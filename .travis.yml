@@ -29,7 +29,7 @@ script:
     || (echo 'Idempotency: FAIL' && exit 1)
 
   # Connection test
-  - "curl 127.0.0.1:443"
+  - "netstat -ltpn | grep 443 | head -n 1"
   # Facts syntax check
   - >
     sudo cat /etc/ansible/facts.d/hitch.fact
