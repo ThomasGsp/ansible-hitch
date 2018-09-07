@@ -17,21 +17,17 @@ install:
 script:
   # Syntax check
   - "ansible-playbook -i localhost, test/hitch.yml --syntax-check"
-  # Test Redis Server
+
+  # Test Hitch
   - "ansible-playbook -i localhost, test/hitch.yml --connection=local --sudo"
+
   # Idempotency check
   - >
     ansible-playbook -i localhost, test/hitch.yml --connection=local --sudo
     | grep -q 'changed=0.*failed=0'
     && (echo 'Idempotency: PASS' && exit 0)
     || (echo 'Idempotency: FAIL' && exit 1)
-  # Test Hitch
-  - "ansible-playbook -i localhost, test/hitch.yml --connection=local --sudo"
-  - >
-    ansible-playbook -i localhost, test/hitch.yml --connection=local --sudo
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotency: PASS' && exit 0)
-    || (echo 'Idempotency: FAIL' && exit 1)
+
   # Connection test
   - "curl 127.0.0.1:443"
   # Facts syntax check
