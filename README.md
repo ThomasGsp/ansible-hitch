@@ -2,9 +2,12 @@
 
 [![Build Status](https://api.travis-ci.org/ThomasGsp/ansible-hitch.svg?branch=master)](https://travis-ci.org/ThomasGsp/ansible-hitch) [![Ansible Galaxy](https://img.shields.io/badge/galaxy-ThomasGsp.hitch-blue.svg?style=flat)](https://galaxy.ansible.com/detail#/role/xxx)
 
- - Ansible 2.2+ (1.x not supported)
+ - Ansible 2.4+
  - Compatible with most versions of Ubuntu/Debian
  - Compatibility with RHEL/CentOS 6.x will come soon
+
+ This role is directly created from the excellent redis role by David Wittman
+ https://github.com/DavidWittman/ansible-redis
 
 ## Contents
 
