@@ -19,17 +19,12 @@ script:
   - "ansible-playbook -i localhost, test/hitch.yml --syntax-check"
 
   # Test Hitch
-  - "ansible-playbook -i localhost, test/hitch.yml --connection=local --sudo"
+  - "ansible-playbook -i localhost, test/hitch.yml --connection=local"
 
-  # Idempotency check
-  - >
-    ansible-playbook -i localhost, test/hitch.yml --connection=local --sudo
-    | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotency: PASS' && exit 0)
-    || (echo 'Idempotency: FAIL' && exit 1)
 
   # Connection test
   - "netstat -ltpn | grep 443 | head -n 1"
+
   # Facts syntax check
   - >
     sudo cat /etc/ansible/facts.d/hitch.fact
