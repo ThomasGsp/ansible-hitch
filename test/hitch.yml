@@ -1,5 +1,6 @@
 ---
 - hosts: all
+  become: yes
   remote_user: root
   vars:
     hitch_travis_ci: true
