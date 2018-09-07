@@ -73,20 +73,6 @@ Set the `verify_checksum` variable to true to use the checksum verification opti
 Note that this will only verify checksums when Hitch is downloaded from a URL, not when one is provided in a tarball with `tarball`.
 Due to differences in the `get_url` module in Ansible 1.x and Ansible 2.x, this feature behaves differently depending on the version of Ansible which you are using.
 
-#### Ansible 1.x
-
-In Ansible 1.x, the `get_url` module only supports verifying sha256 checksums, which are not provided by default.
-If you wish to set `verify_checksum`, you must also define a sha256 checksum with the `checksum` variable.
-
-``` yaml
-- name: install hitch on ansible 1.x and verify checksums
-  hosts: all
-  roles:
-    - role: Thomasgsp.hitch
-      version: 1.4.8
-      verify_checksum: true
-      checksum: d52ba690d90c25bbfca73f5e0ed427738366dac12faf46fb5834e497cc2d1ac3
-```
 
 #### Ansible 2.x
 
