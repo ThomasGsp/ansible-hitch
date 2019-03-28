@@ -6,7 +6,7 @@
  - Compatible with most versions of Ubuntu/Debian
  - Compatibility with RHEL/CentOS 6.x will come soon
 
- This role is directly created from the excellent redis role by David Wittman
+ This role is  based on the excellent redis role by David Wittman
  https://github.com/DavidWittman/ansible-redis
 
 ## Contents
