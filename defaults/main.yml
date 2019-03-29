@@ -1,14 +1,14 @@
 ## Installation options
-version         : 1.4.8
-install_dir     : "/opt/hitch"
-download_url    : "https://hitch-tls.org/source/hitch-1.4.8.tar.gz"
-dir             : "/etc/hitch/"
+version: 1.4.8
+install_dir: "/opt/hitch"
+download_url: "https://hitch-tls.org/source/hitch-1.4.8.tar.gz"
+dir: "/etc/hitch/"
 # Set this to true to build 32-bit binaries
-make_32bit      : false
+make_32bit: false
 # Set this value to a local path of a tarball to use for installation instead of downloading
-tarball         : false
+tarball: false
 # Set this to true to validate hitch tarball checksum against vars/main.ym
-verify_checksum : false
+verify_checksum: false
 
 ## Role options
 # Configure Hitch as a service
@@ -30,65 +30,65 @@ frontend:
 # Default Varnish backend (IP:PORT)
 # Can also take a UNIX domain socket path E.g. backend="/path/to/sock"
 # brackets are mandatory .
-backend         : "[127.0.0.1]:6081"
+backend: "[127.0.0.1]:6081"
 #TCP keepalive on client socket
-keepalive       : 3600
+keepalive: 3600
 
 # Periodic backend IP lookup, 0 to disable
-backend_refresh : 0
+backend_refresh: 0
 
 ## ocsp options
 # Set OCSP staple cache directory This enables automated retrieval and stapling of OCSP responses
-ocsp_dir          : "/var/lib/hitch/"
-ocsp_connect_tmo  :
-ocsp_resp_tmo     :
-ocsp_refresh_interval :
-ocsp_verify_staple    :
+ocsp_dir: "/var/lib/hitch/"
+ocsp_connect_tmo:
+ocsp_resp_tmo:
+ocsp_refresh_interval:
+ocsp_verify_staple:
 
 # Pem cert list
-pem_file        :
-  -  "/etc/hitch/certs/default.pem"
+pem_file:
+  - "/etc/hitch/certs/default.pem"
 
-private_key     :
-prefer_server_ciphers :
-proxy_proxy     : off
+private_key:
+prefer_server_ciphers:
+proxy_proxy: off
 
 # Sets the protocols for ALPN/NPN negotiation, given by a comma separated list.
 # If this is not set explicitly, ALPN/NPN will not be used. Requires OpenSSL 1.0.1 for NPN and OpenSSL 1.0.2 for ALPN.
-alpn_protos     : "h2,http/1.1"
+alpn_protos: "h2,http/1.1"
 # All TLS versions, no SSLv3 (deprecated)
-tls_protos      : "TLSv1.0 TLSv1.1 TLSv1.2 SSLv3"
+tls_protos: "TLSv1.0 TLSv1.1 TLSv1.2 SSLv3"
 # Sets allowed ciphers
-ciphers         : "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH"
+ciphers: "EECDH+AESGCM:EDH+AESGCM:AES256+EECDH:AES256+EDH"
 # Abort handshake when client submits an unrecognized SNI server name
-sni_nomatch_abort : off
+sni_nomatch_abort: off
 # Sets OpenSSL engine
-ssl_engine      :
+ssl_engine:
 
 # Number of worker processes.
-workers         : 1
+workers: 1
 
 ## Daemon options
 # Be quiet; emit only error messages
-quiet           : on
+quiet: on
 # Send log message to syslog in addition to stderr/stdout
-syslog          : on
+syslog: on
 # Syslog facility to use
-syslog_facility : daemon
+syslog_facility: daemon
 # Set listen backlog size
-backlog         : 100
+backlog: 100
 # Set uid/gid after binding the socket
-user            : _hitch
+user: _hitch
 # Set gid after binding the socket
-group           : _hitch
+group: _hitch
 # Fork into background and become a daemon; this also sets the --quiet option
-daemon          : on
+daemon: on
 # Sets chroot directory
-chroot          : /etc/hitch
+chroot: /etc/hitch
 # Write 1 octet with the IP family followed by the IP address in 4 (IPv4) or 16 (IPv6) octets
 # little-endian to backend before the actual data
-write_ip        : off
+write_ip: off
 # Write HaProxy's PROXY v1 (IPv4 or IPv6) protocol line before actual data
-write_proxy_v1  : off
+write_proxy_v1: off
 # Write HaProxy's PROXY v2 binary (IPv4 or IPv6) protocol line before actual data
-write_proxy_v2  : on
+write_proxy_v2: on
