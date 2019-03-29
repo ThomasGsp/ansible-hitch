@@ -15,5 +15,8 @@ galaxy_info:
     - networking
     - system
     - web
+    - proxy
+    - varnish
+    - ssl
 
 dependencies: []
